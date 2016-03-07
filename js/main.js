@@ -1,19 +1,20 @@
 // JavaScript Document
 
 var bioObj = {"bio":[
-				{"name":"Lee Gellie",
+    {"name":"Lee Gellie",
     "role":"Web Developer",
-				"contacts":{
-					   "details":[
-        {"mobile":"817-994-5774"},
-        {"email":"leegellie@gmail.com"},
-        {"github":"leegellie"},
-        {"location":"Winston-Salem"}
-				]},
-				"welcomeMessage":"Hello, I am Lee Gellie. I am a web programmer and designer.",
-				"skills":["Web Design", "Web Programming", "Problem Solving"],
+    "contacts":{
+        "details":[
+            {"mobile":"817-994-5774"},
+            {"email":"leegellie@gmail.com"},
+            {"github":"leegellie"},
+            {"location":"Winston-Salem, NC 27023"}
+        ]
+    },
+    "welcomeMessage":"Hello, I am Lee Gellie. I am a web programmer and designer.",
+    "skills":["Web Design", "Web Programming", "Problem Solving"],
     "biopic":"images/prof-pic.jpg", 
-				"display":function() {
+    "display":function() {
         var formattedHead = HTMLheaderName.replace("%data%", bio.name);
         $("#header").append(formattedHead);
     }
@@ -34,13 +35,12 @@ var education = {"schools":[
     {"title":"Intro to Programming Nanodegree", "school":"Udacity", "dates":"2014-2015", "url":""}
 ],
 "display":function() {
-				    var schools = JSON.parse(education[0]);
-        for (var i = 0; i < schools.length; i++) {
-								    
-        var educationEntry = HTMLheaderName.replace("%data%", education.schools);
-        $("#header").append(formattedHead);
-				}}
-]};
+    var schools = JSON.parse(education[0]);
+    for (var i = 0; i < schools.length; i++) {
+    };
+    var educationEntry = HTMLheaderName.replace("%data%", education.schools);
+    $("#header").append(formattedHead);
+}};
 
 var workObj = {"jobs":[
     {"employer":"John", "title":"Doe", "location":"", "dates":"", "description":""},
