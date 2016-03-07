@@ -53,35 +53,43 @@ var googleMap = '<div id="map"></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
-//$(document).ready(function() {
-//  $('button').click(function() {
-//    var iName = inName(name) || function(){};
-//    $('#name').html(iName);  
-//  });
-//});
-//
-///*
+$(document).ready(function() {
+  $('button').click(function() {
+    var iName = inName(name) || function(){};
+    $('#name').html(iName);  
+  });
+});
+
+/*
 //The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
-//*/
-//
-//$(document).click(function(loc) {
-//  var x = loc.pageX;
-//  var y = loc.pageY;
-//		logClicks(x,y);
-//		console.log(x,y);
-//});
-//
-//clickLocations = [];
-//
-//function logClicks(x,y) {
-//  clickLocations.push(
-//    {
-//      x: x,
-//      y: y
-//    }
-//  );
-//  console.log('x location: ' + x + '; y location: ' + y);
-//}
+*/
+function inName(name) {
+    name = name.trim().split(' ');
+				console.log(name);
+				name[1] = name[1].toUpperCase();
+				name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+				console.log(name[0] + ' ' + name[1]);
+}
+
+$(document).click(function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+		logClicks(x,y);
+		console.log(x,y);
+});
+
+clickLocations = [];
+
+function logClicks(x,y) {
+  clickLocations.push(
+    {
+      x: x,
+      y: y
+    }
+  );
+  console.log('x location: ' + x + '; y location: ' + y);
+}
 
 
 
@@ -100,6 +108,9 @@ Start here! initializeMap() is called when page is loaded.
 function initializeMap() {
 
   var locations;
+  var locationsNow;
+  var locationsJobs;
+  var locationsEduc;
 
   var mapOptions = {
     disableDefaultUI: true
@@ -109,17 +120,29 @@ function initializeMap() {
 
   function locationFinder() {
     var locations = [];
+    var locationsNow = [];
+    var locationsJobs = [];
+    var locationsEduc = [];
+
     locations.push(bio.contacts.location);
+				locationsNow.push(bio.contacts.location);
+
     for (var school in education.schools) {
       locations.push(education.schools[school].location);
+      locationsEduc.push(education.schools[school].location);
     }
+
     for (var job in work.jobs) {
       locations.push(work.jobs[job].location);
+      locationsJobs.push(work.jobs[job].location);
     }
 
     return locations;
+				return locationsNow;
+				return locationsJobs;
+				return locationsEduc;
   }
-
+  
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
   placeData is the object returned from search results containing information
@@ -134,9 +157,11 @@ function initializeMap() {
     var bounds = window.mapBounds;            // current boundaries of the map window
 
     // marker is an object with additional data about the pin for a single location
+    //var marker = new MarkerWithLabel({
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
+						animation: google.maps.Animation.DROP,
       title: name
     });
 
@@ -154,7 +179,8 @@ function initializeMap() {
 
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
-    bounds.extend(new google.maps.LatLng(lat, lon));
+    //bounds.extend(new google.maps.LatLng(lat, lon));
+				bounds.extend(placeData.geometry.location);
     // fit the map to the new marker
     map.fitBounds(bounds);
     // center the map
@@ -166,11 +192,11 @@ function initializeMap() {
   If so, it creates a new map marker for that location.
   */
   function callback(results, status) {
+			console.log(results+' -- Status -- '+status);
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       createMapMarker(results[0]);
     }
   }
-
   /*
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
@@ -181,19 +207,26 @@ function initializeMap() {
     // actually searching for location data.
     var service = new google.maps.places.PlacesService(map);
 
+    // I have set the map to only call pins for unique locations. 
+    var uniqueLocations = [];
+    $.each(locations, function(i, el){
+        if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
+    });
+
     // Iterates through the array of locations, creates a search object for each location
-    for (var place in locations) {
+    for (var place in uniqueLocations) {
 
       // the search request object
       var request = {
-        query: locations[place]
+        query: uniqueLocations[place]
       };
 
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
       service.textSearch(request, callback);
     }
-  }
+		}
+
 
   // Sets the boundaries of the map based on pin locations
   window.mapBounds = new google.maps.LatLngBounds();
@@ -203,6 +236,9 @@ function initializeMap() {
 
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
+  //pinNow(locationsNow);
+		//pinJobs(locationsJobs);
+		//pinEduc(locationsEduc);
   pinPoster(locations);
 
 }

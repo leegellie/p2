@@ -7,7 +7,7 @@ var bio = {"name":"Lee Gellie",
         "mobile":"817-994-5774",
         "email":"leegellie@gmail.com",
         "github":"leegellie",
-        "location":"Winston-Salem, NC"
+        "location":"Winston-Salem, NC, USA"
 				},
     "welcomeMessage":"Hello, I am Lee Gellie. I am a web programmer and designer.",
     "skills":["Web Design", "Web Programming", "Problem Solving", "Being Awesome"],
@@ -122,14 +122,14 @@ education.display();
 
 // start WORK OBJECT
 var work = {"jobs":[
-    {"employer":"Self", "title":"Master &amp; Commander", "location":"Winston-Salem, NC", "dates":"2013-current", "description":"I do what I do, websites, design, programming"},
-    {"employer":"Self", "title":"Cowboy", "location":"Fort Worth, TX", "dates":"2013-2013", "description":"I do what I do, websites, design, programming"},
+    {"employer":"Self", "title":"Master &amp; Commander", "location":"Winston-Salem, NC, USA", "dates":"2013-current", "description":"I do what I do, websites, design, programming"},
+    {"employer":"Self", "title":"Cowboy", "location":"Fort Worth, TX, USA", "dates":"2013-2013", "description":"I do what I do, websites, design, programming"},
     {"employer":"Self", "title":"His Lordship", "location":"London, England", "dates":"2008-2013", "description":"I do what I do, websites, design, programming"},
     {"employer":"Greenfields Educational Trust", "title":"Marketing Executive", "location":"Sussex, England", "dates":"2004-2008", "description":"Managed all tech, promotion and marketing for the Trust and its organizations."},
     {"employer":"Cafe Florentine", "title":"Manager", "location":"Edinburgh, Scotland", "dates":"2002-2004", "description":"Ran coffee shop in the centre of Edinburgh's Old Town on the Royal Mile."},
     {"employer":"The Jolly Judge", "title":"Chef", "location":"Edinburgh, Scotland", "dates":"2002-2004", "description":"Chef and barman at one of the oldest pubs in Edinburgh"},
-    {"employer":"International Management Organization", "title":"Data Bureau Chief", "location":"Hollywood, CA", "dates":"1998-2002", "description":"Responsible for collecting, analyzing, reporting on data for around 2000 organizations and writing programs and getting them executed to handle any non-optimal situations."},
-    {"employer":"International Management Organization", "title":"Data Analysis &amp; Alerts Officer", "location":"Hollywood, CA", "dates":"1995-1998", "description":"Responsible for analyzing and reporting on data for around 2000 organizations and summarizing situation reports for them."},
+    {"employer":"International Management Organization", "title":"Data Bureau Chief", "location":"Hollywood, CA, USA", "dates":"1998-2002", "description":"Responsible for collecting, analyzing, reporting on data for around 2000 organizations and writing programs and getting them executed to handle any non-optimal situations."},
+    {"employer":"International Management Organization", "title":"Data Analysis &amp; Alerts Officer", "location":"Hollywood, CA, USA", "dates":"1995-1998", "description":"Responsible for analyzing and reporting on data for around 2000 organizations and summarizing situation reports for them."},
     {"employer":"Advanced Org SH", "title":"Tours In/Charge", "location":"Sussex, England", "dates":"1994-1995", "description":"Responsible for going around Europe to subsidiary companies and executing programs."},
     {"employer":"Advanced Org SH", "title":"Computerization Project", "location":"Sussex, England", "dates":"1994-1995", "description":"Responsible for computerizing all UK subsidiary organizations' files."},
     {"employer":"Advanced Org SH", "title":"Files In/Charge", "location":"Sussex, England", "dates":"1993-1994", "description":"Responsible for computerizing the organizations central files and keeping hard and computer files up to date."},
@@ -201,10 +201,10 @@ projects.display();
 
 // GOOGLE MAPS 
 $('#mapDiv').append(googleMap);
-initializeMap();
 
 
-//
+
+
 //function locationizer(work_obj) {
 //    var locations = [];
 //    for (job in work_obj.jobs) {
