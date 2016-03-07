@@ -13,6 +13,17 @@
   padding-right: 5%;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+  box-shadow: #333 0.5em 0.5em 3em;
+}
+
+.project-image {
+  box-shadow: #333 0.1em 0.1em 0.3em;
+  margin: 0 2em 2em 0;
+}
+
 h1 {
   font-size: 40px;
   color: #F5A623;
@@ -104,10 +115,17 @@ a {
   color: #FFFFFF;
 }
 
-.gray {
-  background-color: #F3F3F3;
+.bio-section {
   padding-bottom: 10px;
   clear:both;
+}
+
+.bio-section:nth-child(even) {
+  background-color: #FFF;
+}
+
+.bio-section:nth-child(odd) {
+  background-color: #F3F3F3;
 }
 
 .dark-gray {
@@ -143,7 +161,6 @@ ul {
   float: left;
   padding: 10px;
   width: 200px;
-  display: none;
 }
 
 img {
