@@ -26,7 +26,7 @@
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: aqua;
   line-height: 48px;
   display: inline;
 }
@@ -34,7 +34,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999999;
+  color: brown;
   line-height: 29px;
   padding: 10px;
 }
@@ -98,16 +98,16 @@ a {
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: aqua;
   display: none;
 }
 
-.orange {
-  background-color: #F5AE23;
+.aqua {
+  background-color: aqua;
 }
 
-.orange-text {
-  color: #F5AE23;
+.aqua-text {
+  color: aqua;
 }
 
 .white-text {
@@ -129,12 +129,12 @@ a {
 }
 
 .dark-gray {
-  background-color: #4A4A4A;
+  background: radial-gradient(#8E6666, #634646, #9A3737, #501111);
 }
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background: radial-gradient(#8E6666, #634646, #9A3737, #501111);
 }
 
 .flex-box {
@@ -161,6 +161,13 @@ ul {
   float: left;
   padding: 10px;
   width: 200px;
+  padding: 0;
+  border-radius: 50% 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.3),
+    inset 0 -2px 3px rgba(0,0,0,0.3),
+    0 1px 1px rgba(255,255,255,0.9);
+  margin-right: 10px;
 }
 
 img {

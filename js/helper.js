@@ -5,19 +5,19 @@ replace the %data% placeholder text you see in them.
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderRole = '<span>%data%</span><hr/>';
 
-var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLcontactGeneric = '<li class="flex-item"><span class="aqua-text">%contact%</span><span class="white-text">%data%</span></li>';
+var HTMLmobile = '<li class="flex-item"><span class="aqua-text">mobile</span><span class="white-text">%data%</span></li>';
+var HTMLemail = '<li class="flex-item"><span class="aqua-text">email</span><span class="white-text">%data%</span></li>';
+var HTMLtwitter = '<li class="flex-item"><span class="aqua-text">twitter</span><span class="white-text">%data%</span></li>';
+var HTMLgithub = '<li class="flex-item"><span class="aqua-text">github</span><span class="white-text">%data%</span></li>';
+var HTMLblog = '<li class="flex-item"><span class="aqua-text">blog</span><span class="white-text">%data%</span></li>';
+var HTMLlocation = '<li class="flex-item"><span class="aqua-text">location</span><span class="white-text">%data%</span></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLWelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
-var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
+var HTMLskillsStart = '<h3 id="skillsH3" class="skillsH3 right">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+var HTMLskills = '<li class="flex-item right"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
 var HTMLworkEmployer = '<a href="#">%data%';
@@ -118,29 +118,28 @@ function initializeMap() {
 
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
-  function locationFinder() {
-    var locations = [];
+  function locationFinderNow() {
     var locationsNow = [];
-    var locationsJobs = [];
-    var locationsEduc = [];
-
-    locations.push(bio.contacts.location);
 				locationsNow.push(bio.contacts.location);
+				console.log("now : "+locationsNow);
+    return locationsNow;
+  }
 
+  function locationFinderEduc() {
+    var locationsEduc = [];
     for (var school in education.schools) {
-      locations.push(education.schools[school].location);
       locationsEduc.push(education.schools[school].location);
     }
-
+				console.log("Educ : "+locationsEduc);
+				return locationsEduc;
+  }
+  function locationFinderJobs() {
+    var locationsJobs = [];
     for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
       locationsJobs.push(work.jobs[job].location);
     }
-
-    return locations;
-				return locationsNow;
-				return locationsJobs;
-				return locationsEduc;
+				console.log("Jobs : "+locationsJobs);
+    return locationsJobs;
   }
   
   /*
@@ -191,9 +190,11 @@ function initializeMap() {
   callback(results, status) makes sure the search returned results for a location.
   If so, it creates a new map marker for that location.
   */
+		var delay = 100;
   function callback(results, status) {
 			console.log(results+' -- Status -- '+status);
     if (status == google.maps.places.PlacesServiceStatus.OK) {
+					console.log(results[0]);
       createMapMarker(results[0]);
     }
   }
@@ -201,7 +202,7 @@ function initializeMap() {
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
   */
-  function pinPoster(locations) {
+  function pinPoster(locations, type) {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
@@ -223,7 +224,7 @@ function initializeMap() {
 
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
-      service.textSearch(request, callback);
+				  service.textSearch(request, callback);
     }
 		}
 
@@ -232,15 +233,27 @@ function initializeMap() {
   window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
-  locations = locationFinder();
+  locationsEduc = locationFinderEduc();
+  locationsJobs = locationFinderJobs();
+  locationsNow = locationFinderNow();
 
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   //pinNow(locationsNow);
 		//pinJobs(locationsJobs);
 		//pinEduc(locationsEduc);
-  pinPoster(locations);
-
+  function runEduc(){
+		  pinPoster(locationsEduc, tEduc);
+		}
+  function runJobs(){
+  		pinPoster(locationsJobs, tJobs);
+		}
+  function runNow(){
+		  pinPoster(locationsNow, tNow);
+		}
+		setTimeout(runEduc, 1000)
+		setTimeout(runJobs, 3000)
+		setTimeout(runNow, 5000)
 }
 
 /*
