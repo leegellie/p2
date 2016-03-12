@@ -1,61 +1,94 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Resume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/style.css" rel="stylesheet" type="text/css">
-  <script src="js/jQuery.js"></script>
-  <script src="js/helper.js"></script>
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCpWpv6juG9D-OTZASb30Ssldk7QF7Mpkc&libraries=places"></script>
-  <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title>Resume</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script src="js/jQuery.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCpWpv6juG9D-OTZASb30Ssldk7QF7Mpkc&libraries=places" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/scrollspy.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
-<body unresolved>
-  <div id="main" class="container">
-    <div id="header" class="center-content clearfix">
-      <ul id="topContacts" class='flex-box'></ul>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body data-offset="50" data-spy="scroll" data-target=".navbar">
+    <div class="container" id="main">
+        <nav class="navbar navbar-default navbar-fixed-top nav-screen">
+            <div class="container">
+                <ul class="nav nav-tabs nav-justified" id="main-menu">
+                    <li class="nav-tabs active">
+                        <a class="nav-section1" href="#header" id="link1">Top</a>
+                    </li>
+                    <li class="nav-tabs">
+                        <a class="nav-section2" href="#workExperience" id="link2">Work</a>
+                    </li>
+                    <li class="nav-tabs">
+                        <a class="nav-section3" href="#projects" id="link3">Projects</a>
+                    </li>
+                    <li class="nav-tabs">
+                        <a class="nav-section4" href="#education" id="link4">Education</a>
+                    </li>
+                    <li class="nav-tabs">
+                        <a class="nav-section5" href="#mapDiv" id="link5">Map</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav class="navbar navbar-default navbar-fixed-top nav-mobile">
+            <div class="container">
+                <ul class="nav navbar nav-pills pull-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"><span aria-hidden="true" class="glyphicon glyphicon-menu-hamburger"></span><span class="dd-menu">Menu</span></a>
+                        <ul class="dropdown-menu" id="main-dd">
+                            <li class="nav-tabs active">
+                                <a class="nav-section1" href="#header" id="link6">Top</a>
+                            </li>
+                            <li class="nav-tabs">
+                                <a class="nav-section2" href="#workExperience" id="link7">Work</a>
+                            </li>
+                            <li class="nav-tabs">
+                                <a class="nav-section3" href="#projects" id="link8">Projects</a>
+                            </li>
+                            <li class="nav-tabs">
+                                <a class="nav-section4" href="#education" id="link9">Education</a>
+                            </li>
+                            <li class="nav-tabs">
+                                <a class="nav-section5" href="#mapDiv" id="link10">Map</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <header class="center-content clearfix" id="header">
+            <ul class='flex-box' id="topContacts"></ul>
+        </header>
+        <div style='clear: both;'></div>
+        <section class='bio-section' id="workExperience">
+            <h2>Work Experience</h2>
+        </section>
+        <section class='bio-section' id="projects">
+            <h2>Projects</h2>
+        </section>
+        <section class='bio-section' id="education">
+            <h2>Education</h2>
+        </section>
+        <section class='bio-section' id="mapDiv">
+            <h2>Where I've Lived and Worked</h2>
+        </section>
+        <footer class='dark-gray' id="letsConnect">
+            <h2 class='aqua center-text'>Get in touch</h2>
+            <ul class="flex-box footer-contacts" id="footerContacts"></ul>
+        </footer>
     </div>
-    <div style='clear: both;'></div>
-    <div id="workExperience" class='bio-section'>
-      <h2>Work Experience</h2>
-    </div>
-    <div id="projects" class='bio-section'>
-      <h2>Projects</h2>
-    </div>
-    <div id="education" class='bio-section'>
-      <h2>Education</h2>
-    </div>
-    <div id="mapDiv" class='bio-section'>
-      <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="letsConnect" class='dark-gray'>
-      <h2 class='aqua center-text'>Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
-    </div>
-  </div>
-  <script src="js/resumeBuilder.js"></script>
-  <script type="text/javascript">
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.display = 'none';
-    }
-    if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
-    }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
-    }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
-    }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
-    }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('letsConnect').style.display = 'none';
-    }
-    if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.display = 'none';
-    }
-  </script>
+    <script src="js/resumeBuilder.js">
+    </script>
 </body>
-</html>
+</html></html>
