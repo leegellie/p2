@@ -1,5 +1,4 @@
 // JavaScript Document
-
 // start BIO OBJECT
 var bio = {
     "name": "Lee Gellie",
@@ -11,9 +10,7 @@ var bio = {
         "location": "Winston-Salem, NC, USA"
     },
     "welcomeMessage": "Hello, I am Lee Gellie. I am a web programmer and designer.",
-    "skills": ["Web Design", "Web Programming", "Problem Solving",
-        "Being Awesome"
-    ],
+    "skills": ["Web Design", "Web Programming", "Problem Solving", "Being Awesome"],
     "biopic": "images/prof-pic.jpg",
     display: function() {
 
@@ -32,14 +29,10 @@ var bio = {
             contacts.location));
 
         // Insert each contact detail into footerContacts bar
-        $('#footerContacts').append(HTMLmobile.replace("%data%",
-            contacts.mobile));
-        $('#footerContacts').append(HTMLemail.replace("%data%",
-            contacts.email));
-        $('#footerContacts').append(HTMLgithub.replace("%data%",
-            contacts.github));
-        $('#footerContacts').append(HTMLlocation.replace("%data%",
-            contacts.location));
+        $('#footerContacts').append(HTMLmobile.replace("%data%", contacts.mobile));
+        $('#footerContacts').append(HTMLemail.replace("%data%", contacts.email));
+        $('#footerContacts').append(HTMLgithub.replace("%data%", contacts.github));
+        $('#footerContacts').append(HTMLlocation.replace("%data%", contacts.location));
 
         // Insert bioPic & Welcome Message
         $('#header').append(HTMLbioPic.replace("%data%", bio.biopic));
@@ -53,8 +46,8 @@ var bio = {
 
         // Insert each skill into Header
         for (var i = 0; i < skills.length; i++) {
-            $('#header').append(HTMLskills.replace("%data%", skills[i]))
-        };
+            $('#header').append(HTMLskills.replace("%data%", skills[i]));
+        }
     }
 };
 
@@ -117,6 +110,7 @@ var education = {
         "location": "Clearwater, FL, USA",
         "degree": "N/A",
         "majors": "",
+
         "dates": "1983-1986",
         "url": ""
     }],
@@ -144,24 +138,18 @@ var education = {
             $('#education').append(HTMLschoolStart);
 
             // Combine <a> link for Employer & Title
-            var educTitle = HTMLschoolName.replace("%url%", schools.url)
-                .replace("%data%", schools.name) + HTMLschoolDegree.replace(
-                    "%data%", schools.degree);
+            var educTitle = HTMLschoolName.replace("%url%", schools.url).replace("%data%", schools.name) + HTMLschoolDegree.replace("%data%", schools.degree);
 
             // Append all Job data
             $('.education-entry:last').append(educTitle);
-            $('.education-entry:last').append(HTMLschoolDates.replace(
-                "%data%", schools.dates));
-            $('.education-entry:last').append(HTMLschoolLocation.replace(
-                "%data%", schools.location));
+            $('.education-entry:last').append(HTMLschoolDates.replace("%data%", schools.dates));
+            $('.education-entry:last').append(HTMLschoolLocation.replace("%data%", schools.location));
 
             // If no majors entered alter output
-            if (schools.majors != 0) {
-                $('.education-entry:last').append(HTMLschoolMajor.replace(
-                    "%data%", schools.majors));
+            if (schools.majors !== 0) {
+                $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", schools.majors));
             } else {
-                $('.education-entry:last').append(HTMLschoolMajor.replace(
-                    "%data%", "No Majors Listed"));
+                $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", "No Majors Listed"));
             }
         }
 
@@ -173,19 +161,13 @@ var education = {
             $('#education').append(HTMLonlineClasses);
 
             // Loop through and add courses
-            for (var i = 0; i < onlineCs.length; i++) {
-                var online = onlineCs[i];
-                var onlineTitle = HTMLonlineTitle.replace("%url%",
-                    online.url).replace("%data%",
-                    online.title) + HTMLonlineSchool.replace(
-                    "%data%", online.school);
+            for (var j = 0; j < onlineCs.length; j++) {
+                var online = onlineCs[j];
+                var onlineTitle = HTMLonlineTitle.replace("%url%", online.url).replace("%data%", online.title) + HTMLonlineSchool.replace("%data%", online.school);
                 $('#education').append(HTMLschoolStart);
                 $('.education-entry:last').append(onlineTitle);
-                $('.education-entry:last').append(HTMLonlineDates.replace(
-                    "%data%", online.dates));
-                $('.education-entry:last').append(HTMLonlineURL.replace(
-                    "%url%", online.url).replace(
-                    "%data%", online.url));
+                $('.education-entry:last').append(HTMLonlineDates.replace("%data%", online.dates));
+                $('.education-entry:last').append(HTMLonlineURL.replace("%url%", online.url).replace("%data%", online.url));
             }
         }
     }
@@ -282,17 +264,13 @@ var work = {
             $('#workExperience').append(HTMLworkStart);
 
             // Combine <a> link for Employer & Title
-            var jobTitle = HTMLworkEmployer.replace("%data%", job.employer) +
-                HTMLworkTitle.replace("%data%", job.title);
+            var jobTitle = HTMLworkEmployer.replace("%data%", job.employer) + HTMLworkTitle.replace("%data%", job.title);
 
             // Append all Job data
             $('.work-entry:last').append(jobTitle);
-            $('.work-entry:last').append(HTMLworkDates.replace("%data%",
-                job.dates));
-            $('.work-entry:last').append(HTMLworkLocation.replace(
-                "%data%", job.location));
-            $('.work-entry:last').append(HTMLworkDescription.replace(
-                "%data%", job.description));
+            $('.work-entry:last').append(HTMLworkDates.replace("%data%", job.dates));
+            $('.work-entry:last').append(HTMLworkLocation.replace("%data%", job.location));
+            $('.work-entry:last').append(HTMLworkDescription.replace("%data%", job.description));
         }
     }
 };
@@ -331,22 +309,18 @@ var projects = {
             $('#projects').append(HTMLprojectStart);
 
             // Append all Project data
-            $('.project-entry:last').append(HTMLprojectTitle.replace(
-                "%data%", pjt.title));
-            $('.project-entry:last').append(HTMLprojectDates.replace(
-                "%data%", pjt.dates));
-            $('.project-entry:last').append(HTMLprojectDescription.replace(
-                "%data%", pjt.description));
+            $('.project-entry:last').append(HTMLprojectTitle.replace("%data%", pjt.title));
+            $('.project-entry:last').append(HTMLprojectDates.replace("%data%", pjt.dates));
+            $('.project-entry:last').append(HTMLprojectDescription.replace("%data%", pjt.description));
 
             // Loop through and insert images for project, if any
-            if (pjt.images != 0) {
+            if (pjt.images !== 0) {
                 var pjtImgs = pjt.images;
                 for (var j = 0; j < pjtImgs.length; j++) {
-                    $('.project-entry:last').append(HTMLprojectImage.replace(
-                        "%data%", pjtImgs[j]));
+                    $('.project-entry:last').append(HTMLprojectImage.replace("%data%", pjtImgs[j]));
                 }
-            };
-        };
+            }
+        }
     }
 };
 
@@ -357,7 +331,7 @@ projects.display();
 $('#mapDiv').append(googleMap);
 
 $(document).ready(function() {
-    $('.dropdown-toggle').dropdown()
+    $('.dropdown-toggle').dropdown();
     if (document.getElementsByClassName('flex-item').length === 0) {
         document.getElementById('topContacts').style.display = 'none';
     }
@@ -393,8 +367,7 @@ function scrollNav() {
         $('.' + thisClass).parent('li').addClass('active');
         //Animate
         $('html, body').stop().animate({
-            scrollTop: $($(this).attr('href')).offset().top -
-                70
+            scrollTop: $($(this).attr('href')).offset().top -70
         }, 400);
         return false;
     });
@@ -410,8 +383,7 @@ function scrollMob() {
         $('.' + thisClass).parent('li').addClass('active');
         //Animate
         $('html, body').stop().animate({
-            scrollTop: $($(this).attr('href')).offset().top -
-                70
+            scrollTop: $($(this).attr('href')).offset().top -70
         }, 400);
         $('#main-dd').click();
         return false;

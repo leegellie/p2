@@ -130,11 +130,15 @@ a {
 }
 
 .bio-section:nth-child(even) {
-    background-color: #F3F3F3;
+    background-color: #FFF;
+}
+
+.bio-h2 {
+    margin-top: 0 !important;
 }
 
 .bio-section:nth-child(odd) {
-    background-color: #FFF;
+    background-color: #F3F3F3;
 }
 
 .footer-contacts {

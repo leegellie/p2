@@ -90,8 +90,8 @@ function initializeMap() {
 
     function locationFinderEduc() {
         var locationsEduc = [];
-        for (var school in education.schools) {
-            locationsEduc.push(education.schools[school].location);
+        for (var i = 0; i < education.schools.length; i++) {
+            locationsEduc.push(education.schools[i].location);
         }
         console.log("Educ : " + locationsEduc);
         return locationsEduc;
@@ -99,8 +99,8 @@ function initializeMap() {
 
     function locationFinderJobs() {
         var locationsJobs = [];
-        for (var job in work.jobs) {
-            locationsJobs.push(work.jobs[job].location);
+        for (var i = 0; i < work.jobs.length; i++) {
+            locationsJobs.push(work.jobs[i].location);
         }
         console.log("Jobs : " + locationsJobs);
         return locationsJobs;
@@ -179,7 +179,7 @@ function initializeMap() {
         for (var i = 0; i < jobs.length; i++) {
             var job = jobs[i];
             if (name.substring(0, 3) == job.location.substring(0, 3)) {
-                var labData = "<h2>" + job.title + "</h2><h3>" + job.dates + "</h3><p>" + job.location + "</p>";
+                labData = "<h2>" + job.title + "</h2><h3>" + job.dates + "</h3><p>" + job.location + "</p>";
             }
         }
         var infoWindow = new google.maps.InfoWindow({
@@ -219,7 +219,7 @@ function initializeMap() {
         for (var i = 0; i < educs.length; i++) {
             var educ = educs[i];
             if (name.substring(0, 3) == educ.location.substring(0, 3)) {
-                var labData = "<h2>" + educ.name + "</h2><h3>" + educ.dates + "</h3><p>" + educ.location + "</p>";
+                labData = "<h2>" + educ.name + "</h2><h3>" + educ.dates + "</h3><p>" + educ.location + "</p>";
             }
         }
         var infoWindow = new google.maps.InfoWindow({
@@ -272,9 +272,9 @@ function initializeMap() {
             if ($.inArray(el, uniqueLocations) === -1)
                 uniqueLocations.push(el);
         });
-        for (var place in uniqueLocations) {
+        for (var i = 0; i < uniqueLocations.length; i++) {
             var request = {
-                query: uniqueLocations[place],
+                query: uniqueLocations[i],
             };
             service.textSearch(request, callback);
         }
@@ -288,9 +288,9 @@ function initializeMap() {
             if ($.inArray(el, uniqueLocations) === -1)
                 uniqueLocations.push(el);
         });
-        for (var place in uniqueLocations) {
+        for (var i = 0; i < uniqueLocations.length; i++) {
             var request = {
-                query: uniqueLocations[place]
+                query: uniqueLocations[i]
             };
             service.textSearch(request, callbackEduc);
         }
@@ -304,9 +304,9 @@ function initializeMap() {
             if ($.inArray(el, uniqueLocations) === -1)
                 uniqueLocations.push(el);
         });
-        for (var place in uniqueLocations) {
+        for (var i = 0; i < uniqueLocations.length; i++) {
             var request = {
-                query: uniqueLocations[place]
+                query: uniqueLocations[i]
             };
             service.textSearch(request, callbackJobs);
         }
@@ -335,9 +335,9 @@ function initializeMap() {
     function runNow() {
         pinPoster(locationsNow);
     }
-    setTimeout(runEduc, 1000)
-    setTimeout(runJobs, 3500)
-    setTimeout(runNow, 6000)
+    setTimeout(runEduc, 1000);
+    setTimeout(runJobs, 3500);
+    setTimeout(runNow, 6000);
 }
 
 // Calls the initializeMap() function when the page loads
