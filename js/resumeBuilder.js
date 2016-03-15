@@ -60,57 +60,56 @@ var education = {
         "name": "International Training Organization",
         "location": "Hollywood, CA, USA",
         "degree": "Business Analysis &amp; Program Execution",
-        "majors": "Organizational Management",
+        "majors": ["Organizational Management"],
         "dates": "1995-2002",
         "url": ""
     }, {
         "name": "Robertsbridge",
         "location": "Knelle Rd, Robertsbridge, TN32 5EA, United Kingdom",
         "degree": "Full GCSEs",
-        "majors": "",
+        "majors": [],
         "dates": "1992-1993",
         "url": "http://www.robertsbridge.org.uk"
     }, {
         "name": "Warden Park",
         "location": "Broad St, Cuckfield, Haywards Heath, RH17 5DP, United Kingdom",
         "degree": "N/A",
-        "majors": "",
+        "majors": [],
         "dates": "1991-1992",
         "url": "http://www.wardenpark.co.uk"
     }, {
         "name": "Sackville",
         "location": "Lewes Rd, East Grinstead, RH19 3TY, United Kingdom",
         "degree": "N/A",
-        "majors": "",
+        "majors": [],
         "dates": "1991-1991",
         "url": "http://www.sackville.w-sussex.sch.uk"
     }, {
         "name": "Mace Kingsley",
         "location": "Passedena, CA, USA",
         "degree": "N/A",
-        "majors": "",
+        "majors": [],
         "dates": "1988-1991",
         "url": ""
     }, {
         "name": "Delphi Academy",
         "location": "Los Angeles, CA, USA",
         "degree": "N/A",
-        "majors": "",
+        "majors": [],
         "dates": "1987-1988",
         "url": "http://www.delphila.org"
     }, {
         "name": "Cave Creek",
         "location": "Phoenix, AZ, USA",
         "degree": "N/A",
-        "majors": "",
+        "majors": [],
         "dates": "1986-1987",
         "url": "http://www.ccusd93.org/education/district/district.php?sectionid=1"
     }, {
         "name": "Apple School",
         "location": "Clearwater, FL, USA",
         "degree": "N/A",
-        "majors": "",
-
+        "majors": [],
         "dates": "1983-1986",
         "url": ""
     }],
@@ -146,7 +145,7 @@ var education = {
             $('.education-entry:last').append(HTMLschoolLocation.replace("%data%", schools.location));
 
             // If no majors entered alter output
-            if (schools.majors !== 0) {
+            if (schools.majors.length !== 0) {
                 $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", schools.majors));
             } else {
                 $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", "No Majors Listed"));
